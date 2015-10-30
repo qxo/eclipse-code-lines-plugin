@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+<!--
+   id="wangkui.statistic.lines"
+   name="%pluginName"
+   version="3.1.1"
+   provider-name="%providerName"
+   class="wangkui.statistic.StatisticPlugin"
+   <runtime>
+      <library name="lines.jar">
+         <export name="*"/>
+      </library>
+   </runtime>
+   <requires>
+      <import plugin="org.eclipse.core.runtime.compatibility"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+   </requires>
+
+	-->
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="wangkui.statistic"
+            name="Statisitc">
+      </category>
+      <view
+            category="wangkui.statistic"
+            class="wangkui.statistic.views.LinesView"
+            icon="icons/full/eview16/linesview.gif"
+            id="wangkui.statistic.views.Lines"
+            name="Lines">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.ui.resourcePerspective">
+         <view
+               relative="org.eclipse.ui.views.TaskList"
+               visible="false"
+               id="wangkui.statistic.views.Lines"
+               relationship="stack">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   
+   
+      <extension	point="org.eclipse.help.toc">
+	      <toc  file="toc.xml"
+	            primary="true">
+	      </toc>
+	      <!--
+	      <toc file="tocconcepts.xml">
+	      </toc>
+	      -->
+	      <toc   file="tocgettingstarted.xml">
+	      </toc>
+   </extension>
+</plugin>
