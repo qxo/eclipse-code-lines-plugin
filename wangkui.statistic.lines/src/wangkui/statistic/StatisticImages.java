@@ -5,12 +5,16 @@
 
 package wangkui.statistic;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import org.eclipse.core.runtime.IPluginDescriptor;
+
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
+import org.osgi.framework.Bundle;
 
 // Referenced classes of package wangkui.statistic:
 //            StatisticPlugin
@@ -29,7 +33,10 @@ public class StatisticImages
         {
             url = new URL(baseURL, "icons/full/" + id);
         }
-        catch(MalformedURLException malformedurlexception) { }
+        catch(MalformedURLException malformedurlexception) {
+            malformedurlexception.printStackTrace();            
+        }
+        
         ImageDescriptor desc = ImageDescriptor.createFromURL(url);
         imageRegistry.put(id, desc);
     }
@@ -59,7 +66,17 @@ public class StatisticImages
 
     private static void initializeImages()
     {
-        URL baseURL = StatisticPlugin.getPlugin().getDescriptor().getInstallURL();
+        
+        Bundle bundle = Platform.getBundle("wangkui.statistic.lines");
+        
+       
+        URL baseURL = bundle.getEntry("/");
+        try {
+            baseURL = FileLocator.resolve(baseURL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("baseURL:"+baseURL);
         createImageDescriptor("elcl16/mode1.gif", baseURL);
         createImageDescriptor("elcl16/mode2.gif", baseURL);
         createImageDescriptor("elcl16/mode3.gif", baseURL);

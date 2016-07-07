@@ -7,7 +7,7 @@ package wangkui.statistic;
 
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPluginDescriptor;
+//import org.eclipse.core.runtime.IPluginDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -16,12 +16,6 @@ import org.osgi.framework.BundleContext;
 
 public class StatisticPlugin extends AbstractUIPlugin
 {
-
-    public StatisticPlugin(IPluginDescriptor descriptor)
-    {
-        super(descriptor);
-        plugin = this;
-    }
 
     public StatisticPlugin()
     {
